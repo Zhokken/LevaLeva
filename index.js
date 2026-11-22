@@ -34,16 +34,20 @@ function visUkeplan() {
     ukeplan.replaceChildren();
 
 
-    // Vis opptil 1 uke, fra og med start. dette kan endre dersom man har lyst til å se flere uker samtidig
+    // Vis opptil 1 uke, fra og med start. dette kan endres senere? dersom man har lyst til å se flere uker samtidig
     // filter searching option kanskje?
-    for (let i = start; i < start + 1 && i < uker.length; i++) {
+    //dette viser fra start til start + 1(visningAnt), så brruker kan se mere
+    //ennn uken de har bladd til
+    let visningAnt = 1 //dette kan endrres som ett søkefilter?
+    for (let i = start; i < start + visningAnt && i < uker.length; i++) {
         let uke = uker[i];
 
         let tittel = document.createElement("h2");
         tittel.textContent = uke.tittel;
         ukeplan.append(tittel);
 
-        if (uke.turer.length === 0)//sjekker om current week har innhold i turer{
+        if (uke.turer.length === 0)//sjekker om current week har innhold i turer
+        {
             let feedback = document.createElement("p");
             feedback.textContent = "Ingen turer denne uka.";
             ukeplan.append(feedback);
@@ -63,7 +67,7 @@ function visUkeplan() {
 }
 //treated som function expression?
 //could listen for click, men dt her e intuitive
-forrige.onclick = function () {
+forrige.onclick = function() {
     start--;
     visUkeplan();
 };
