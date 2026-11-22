@@ -43,13 +43,13 @@ function visUkeplan() {
         tittel.textContent = uke.tittel;
         ukeplan.append(tittel);
 
-        if (uke.turer.length === 0) {
-            let melding = document.createElement("p");
-            melding.textContent = "Ingen turer denne uka.";
-            ukeplan.append(melding);
+        if (uke.turer.length === 0)//sjekker om current week har innhold i turer{
+            let feedback = document.createElement("p");
+            feedback.textContent = "Ingen turer denne uka.";
+            ukeplan.append(feedback);
         }
 
-        // Lag én knapp for hver tur i denne uka.
+        // Lag en knapp for hver tur i denne uka.
         for (let j = 0; j < uke.turer.length; j++) {
             let tur = uke.turer[j];
 
@@ -61,7 +61,8 @@ function visUkeplan() {
     }
 
 }
-
+//treated som function expression?
+//could listen for click, men dt her e intuitive
 forrige.onclick = function () {
     start--;
     visUkeplan();
